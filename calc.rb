@@ -33,6 +33,24 @@ def lg(x)
   ln(x)/ln(2)
 end 
 
+def fact(x)
+  if x < 0
+    raise Exception.new("Factorial of number < 0")
+  elsif x == 0
+    return 1
+  else
+    $fact_cache ||= {}
+    if $fact_cache[x]
+      return $fact_cache[x]
+    end
+    return $fact_cache[x] = x * fact(x-1)
+  end
+end
+
+def choose(n, k)
+  return fact(n) / (fact(k) * fact(n - k))
+end
+
 # A module that can be mixed in to an Integer class to get easy base conversion.
 module IntegerExtensions
   def toHex
