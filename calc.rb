@@ -91,7 +91,8 @@ def e ; E ; end
 
 # Extend both Fixnum and Bignum with our base conversion extensions, and make
 # integer division print a warning message if information is lost.
-[Fixnum, Bignum].each do |klass|
+#[Fixnum, Bignum].each do |klass|
+[Integer].each do |klass|
   klass.class_eval do 
     include IntegerExtensions
     alias olddiv /  
